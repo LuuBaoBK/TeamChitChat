@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Front not require login
+Route::group(['namespace' => 'Front'], function () {
+    Route::get('/', 'AuthenticateController@getHomePage')
+        ->name('homepage');
+    Route::post('/login', 'AuthenticateController@postLogin')
+        ->name('login');
 });
+
+//Front require login
+Route::group(['namespace' => 'Front'], function() {
+	Route::get('/home',function(){
+		return view('welcome'); 
+	})->name('welcome');
+});
+
