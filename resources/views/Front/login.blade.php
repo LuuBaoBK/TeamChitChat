@@ -13,17 +13,18 @@
 			<div class="form-group has-feedback has-error @if($errors->has('email')) has-error @endif">
 				{{ Form::text('email','',['class' => 'form-control text-center', 'placeholder' => 'Email']) }}
 				<div class="form-control-feedback">
-				<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-  				<div class="aria-describedby">(error)</div>
+				@if($errors->has('email'))
+					<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span> 
+				@endif
   				</div>
 				@foreach($errors->get('email') as $msg)
-					<p class="form-control-feedback">{{ $msg }}</p>
+					<p class="text-danger">{{ $msg }}</p>
 				@endforeach
 			</div>
 			<div class="form-group @if($errors->has('password')) has-error @endif">
 				{{ Form::password('password',['class' => 'form-control text-center', 'placeholder' => 'Password']) }}
 				@foreach($errors->get('password') as $msg)
-					<div class="form-control-feedback">{{ $msg }}</div>
+					<p class="text-danger">{{ $msg }}</p>
 				@endforeach
 			</div>
 			<div class="form-group">

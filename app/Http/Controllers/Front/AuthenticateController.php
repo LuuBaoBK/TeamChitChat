@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\LoginFormRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginFormRequest;
+use Auth;
 
 class AuthenticateController extends Controller
 {
-	/**
+    /**
      * Where to redirect users after login.
      *
      * @var string
@@ -21,11 +22,16 @@ class AuthenticateController extends Controller
 
     public function getHomePage()
     {
-    	return view('front.login');
+        return view('front.login');
     }
 
     public function postLogin(LoginFormRequest $request)
     {
-    	dd($request);
+        $credential = array_except($request->input(), ['_token']);
+        if (Auth::attempt($credential)) {
+        	return "b";
+        } else {
+        	return "a";
+        }
     }
 }
