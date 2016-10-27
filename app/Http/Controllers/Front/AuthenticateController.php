@@ -13,15 +13,13 @@ class AuthenticateController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
     public function getHomePage()
-    {
+    {	
         return view('front.login');
     }
 
@@ -29,9 +27,9 @@ class AuthenticateController extends Controller
     {
         $credential = array_except($request->input(), ['_token']);
         if (Auth::attempt($credential)) {
-        	return "b";
+        	return redirect(route('welcome'));
         } else {
-        	return "a";
+        	return back()->withErrors(['login_fails' => trans('messages.login_fails')]);
         }
     }
 }

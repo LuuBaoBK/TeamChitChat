@@ -8,7 +8,10 @@
 		<div class="login_form col-lg-6 col-lg-offset-3">
 			{{ Form::open(['route' => 'login', 'method' => 'POST']) }}
 			<div class="form-group">
-				<h3 class="text-center"><b>{{ trans('messages.LoginFormName') }}</b></h3>
+				<h3 class="text-center"><b>{{ trans('messages.login_form_name') }}</b></h3>
+				@if($errors->has('login_fails'))
+					<p class="text-danger text-center">{{ $errors->first('login_fails') }}</p>
+				@endif
 			</div>
 			<div class="form-group has-feedback has-error @if($errors->has('email')) has-error @endif">
 				{{ Form::text('email','',['class' => 'form-control text-center', 'placeholder' => 'Email']) }}
@@ -28,10 +31,10 @@
 				@endforeach
 			</div>
 			<div class="form-group">
-				{{ Form::submit(trans('messages.Login'), ['class' => 'btn btn-block btn-primary']) }}
+				{{ Form::submit(trans('messages.login'), ['class' => 'btn btn-block btn-primary']) }}
 			</div>
 			<div class="form-group">
-				{{ Form::button(trans('messages.ForgotPassword'), ['class' => 'btn btn-block btn-danger']) }}
+				{{ Form::button(trans('messages.forgot_password'), ['class' => 'btn btn-block btn-danger']) }}
 			</div>
 			<div class="form-group">
 				<div class="col-lg-4">
@@ -44,8 +47,6 @@
 					<a href="#" class="btn btn-primary btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i> google-plus</a>
 				</div>
 			</div>
-			
-
 			{{ Form::close() }}
 		</div>
 	</div>
