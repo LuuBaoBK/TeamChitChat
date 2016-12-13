@@ -15,7 +15,7 @@ class AuthenticateController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     public function getHomePage()
@@ -31,5 +31,14 @@ class AuthenticateController extends Controller
         } else {
         	return back()->withErrors(['login_fails' => trans('messages.login_fails')]);
         }
+    }
+
+    public function getLogout()
+    {
+        if(Auth::check()) {
+            Auth::logout();
+        }
+        
+        return redirect('/');
     }
 }

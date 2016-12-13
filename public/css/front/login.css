@@ -2,16 +2,21 @@
 * @Author: bao.luu
 * @Date:   2016-10-21 13:54:13
 * @Last Modified by:   bao.luu
-* @Last Modified time: 2016-10-21 16:49:13
+* @Last Modified time: 2016-12-13 11:32:47
 */
 
 div.login {
+	position: relative;
 	height          : 100vh;
 	min-height      : 100%;
 	background-color: black;
 	color           : white;
+	/*border-style: solid; 
+	border-width: 1px; 
+	border-color: red;*/
 }
 
 div.login_form {
-	margin: 30vh;
+	position: absolute;
+	margin-top: 30%;
 }

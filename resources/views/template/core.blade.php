@@ -13,11 +13,8 @@
 	    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
 	    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     </head>
-    <body>
-	    <div class="container">
-			@yield('content')
-		</div>
-    	
+    <body class="container">
+		@yield('content')    	
     	<!--Additional JS -->
 	    @yield('JS')
     </body>

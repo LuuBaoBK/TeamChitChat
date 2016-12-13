@@ -17,6 +17,8 @@ Route::group(['namespace' => 'Front'], function () {
         ->name('homepage');
     Route::post('/login', 'AuthenticateController@postLogin')
         ->name('login');
+    Route::get('/logout', 'AuthenticateController@getLogout')
+		->name('logout');
 });
 
 //Front require login

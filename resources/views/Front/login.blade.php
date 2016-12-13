@@ -5,7 +5,13 @@
 
 @section('content')
 	<div class="login">
-		<div class="login_form col-lg-6 col-lg-offset-3">
+		<div class="login_form col-xs-6 col-xs-offset-3" style="border-style: solid; border-width: 1px; border-color: black;">
+		<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>aa
 			{{ Form::open(['route' => 'login', 'method' => 'POST']) }}
 			<div class="form-group">
 				<h3 class="text-center"><b>{{ trans('messages.login_form_name') }}</b></h3>
@@ -36,18 +42,36 @@
 			<div class="form-group">
 				{{ Form::button(trans('messages.forgot_password'), ['class' => 'btn btn-block btn-danger']) }}
 			</div>
+			<hr>
+			<h4 class="text-center"><b>{{ trans('messages.login_via') }}</b></h4>
 			<div class="form-group">
-				<div class="col-lg-4">
-					<a href="#" class="btn btn-primary btn-block" role="button"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+				<div class="col-md-6"  style="margin-top:2px">
+					<a href="#" class="login-via btn btn-primary btn-block" role="button"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
 				</div>
-				<div class="col-lg-4">
-					<a href="#" class="btn btn-primary btn-block" role="button"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
-				</div>
-				<div class="col-lg-4">
-					<a href="#" class="btn btn-primary btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i> google-plus</a>
+				<div class="col-md-6"  style="margin-top:2px">
+					<a href="#" class="login-via btn btn-danger btn-block" role="button"><i class="fa fa-google-plus" aria-hidden="true"></i> google-plus</a>
 				</div>
 			</div>
 			{{ Form::close() }}
 		</div>
 	</div>
+@endsection
+@section('javascript')
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1340837419280281',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 @endsection
